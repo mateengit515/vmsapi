@@ -15,8 +15,7 @@ public class WebConfig {
                 registry.addMapping("/**")
                         .allowedOrigins(
                             "http://localhost:5173",
-                            "https://main.d3p5wwek0i9wpj.amplifyapp.com",
-                            "https://api.mohsinbhai.com"
+                            "https://main.d3p5wwek0i9wpj.amplifyapp.com"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")

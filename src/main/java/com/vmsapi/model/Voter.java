@@ -55,9 +55,17 @@ public class Voter {
     @JsonProperty("contact_number")
     private String contactNumber;
 
+    @Column(name = "status")
+    @JsonProperty("status")
+    private String status;
+
+    @Column(name = "voted")
+    @JsonProperty("voted")
+    private String voted;
+
     public Voter() {}
 
-    public Voter(int serialNo, String epicNo, int houseSeq, int houseTotal, String incharge, String sex, String name, String doorNo, String available, String roomNo, int age, String contactNumber) {
+    public Voter(int serialNo, String epicNo, int houseSeq, int houseTotal, String incharge, String sex, String name, String doorNo, String available, String roomNo, int age, String contactNumber, String status, String voted) {
         this.serialNo = serialNo;
         this.epicNo = epicNo;
         this.houseSeq = houseSeq;
@@ -70,6 +78,8 @@ public class Voter {
         this.roomNo = roomNo;
         this.age = age;
         this.contactNumber = contactNumber;
+        this.status = status;
+        this.voted = voted;
     }
 
     public int getSerialNo() { return serialNo; }
@@ -107,4 +117,10 @@ public class Voter {
 
     public String getContactNumber() { return contactNumber; }
     public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+
+    public String getVoted() { return voted; }
+    public void setVoted(String voted) { this.voted = voted; }
 }
