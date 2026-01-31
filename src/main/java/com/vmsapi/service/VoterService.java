@@ -36,11 +36,20 @@ public class VoterService {
         return voterRepository.findDoorNoSummary();
     }
 
+    public List<DoorNoSummary> getDoorNoSummaryForIncharge(String incharge) {
+        // Filter door summary by incharge
+        return voterRepository.findDoorNoSummaryByIncharge(incharge);
+    }
+
     public void updateStatusByEpicNo(String epicNo, String status) {
         voterRepository.updateStatusByEpicNo(epicNo, status);
     }
 
     public void updateVotedByEpicNo(String epicNo, String voted) {
         voterRepository.updateVotedByEpicNo(epicNo, voted);
+    }
+
+    public void updateContactNumberByEpicNo(String epicNo, String contactNumber) {
+        voterRepository.updateContactNumberByEpicNo(epicNo, contactNumber);
     }
 }

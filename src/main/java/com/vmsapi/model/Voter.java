@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@Table(name = "voters")
+@Table(name = "voters_new")
 public class Voter {
     @Id
     @Column(name = "serial_no", unique = true, nullable = false)
@@ -17,11 +17,11 @@ public class Voter {
 
     @Column(name = "house_seq")
     @JsonProperty("house_seq")
-    private int houseSeq;
+    private Integer houseSeq;
 
     @Column(name = "house_total")
     @JsonProperty("house_total")
-    private int houseTotal;
+    private Integer houseTotal;
 
     @Column(name = "incharge")
     @JsonProperty("incharge")
@@ -49,7 +49,7 @@ public class Voter {
 
     @Column(name = "age")
     @JsonProperty("age")
-    private int age;
+    private Integer age;
 
     @Column(name = "contact_number")
     @JsonProperty("contact_number")
@@ -65,7 +65,7 @@ public class Voter {
 
     public Voter() {}
 
-    public Voter(int serialNo, String epicNo, int houseSeq, int houseTotal, String incharge, String sex, String name, String doorNo, String available, String roomNo, int age, String contactNumber, String status, String voted) {
+    public Voter(int serialNo, String epicNo, Integer houseSeq, Integer houseTotal, String incharge, String sex, String name, String doorNo, String available, String roomNo, Integer age, String contactNumber, String status, String voted) {
         this.serialNo = serialNo;
         this.epicNo = epicNo;
         this.houseSeq = houseSeq;
@@ -88,11 +88,11 @@ public class Voter {
     public String getEpicNo() { return epicNo; }
     public void setEpicNo(String epicNo) { this.epicNo = epicNo; }
 
-    public int getHouseSeq() { return houseSeq; }
-    public void setHouseSeq(int houseSeq) { this.houseSeq = houseSeq; }
+    public Integer getHouseSeq() { return houseSeq; }
+    public void setHouseSeq(Integer houseSeq) { this.houseSeq = houseSeq; }
 
-    public int getHouseTotal() { return houseTotal; }
-    public void setHouseTotal(int houseTotal) { this.houseTotal = houseTotal; }
+    public Integer getHouseTotal() { return houseTotal; }
+    public void setHouseTotal(Integer houseTotal) { this.houseTotal = houseTotal; }
 
     public String getIncharge() { return incharge; }
     public void setIncharge(String incharge) { this.incharge = incharge; }
@@ -112,8 +112,8 @@ public class Voter {
     public String getRoomNo() { return roomNo; }
     public void setRoomNo(String roomNo) { this.roomNo = roomNo; }
 
-    public int getAge() { return age; }
-    public void setAge(int age) { this.age = age; }
+    public Integer getAge() { return age; }
+    public void setAge(Integer age) { this.age = age; }
 
     public String getContactNumber() { return contactNumber; }
     public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
