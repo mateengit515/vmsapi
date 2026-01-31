@@ -7,6 +7,7 @@ import com.vmsapi.model.UpdateVotedRequest;
 import com.vmsapi.model.UpdateContactNumberRequest;
 import com.vmsapi.repository.DoorNoSummary;
 import com.vmsapi.service.VoterService;
+import com.vmsapi.service.InchargeService;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -44,9 +45,11 @@ class VoterListResponse {
 public class VoterController {
 
     private final VoterService voterService;
+    private final InchargeService inchargeService;
 
-    public VoterController(VoterService voterService) {
+    public VoterController(VoterService voterService, InchargeService inchargeService) {
         this.voterService = voterService;
+        this.inchargeService = inchargeService;
     }
 
     @GetMapping
@@ -74,7 +77,7 @@ public class VoterController {
 
     @PostMapping("/update-incharge")
     public void updateIncharge(@RequestBody UpdateInchargeRequest request) {
-        voterService.updateInchargeByDoorNo(request.getDoorNo(), request.getIncharge());
+        inchargeService.updateInchargeByDoorNo(request.getDoorNo(), request.getIncharge());
     }
 
     @PostMapping("/update-contact")
