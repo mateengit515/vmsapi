@@ -30,7 +30,7 @@ public class DoorsService {
         List<DoorRow> out = new ArrayList<>();
         for (Object[] r : raw) {
             DoorRow d = new DoorRow();
-            // expected columns: house_total, incharge, comments, door_no, visited, house_order, status
+            // expected columns: house_total, incharge, comments, door_no, visited, house_order, status, available_count
             d.setHouseTotal(r[0] == null ? null : ((Number) r[0]).intValue());
             d.setIncharge(r[1] == null ? null : r[1].toString());
             d.setComments(r[2] == null ? null : r[2].toString());
@@ -38,6 +38,7 @@ public class DoorsService {
             d.setVisited(r[4] == null ? null : r[4].toString());
             d.setHouseOrder(r[5] == null ? null : ((Number) r[5]).intValue());
             d.setStatus(r[6] == null ? null : r[6].toString());
+            d.setAvailableCount(r.length > 7 && r[7] != null ? ((Number) r[7]).intValue() : 0);
             out.add(d);
         }
         return out;

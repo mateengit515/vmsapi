@@ -15,14 +15,18 @@ public class DoorsRepository {
     private EntityManager em;
 
     public List<Object[]> findAllDoorsRaw() {
-        String sql = "SELECT house_total, incharge, comments, door_no, visited, house_order, status FROM doors ORDER BY house_order ASC, door_no ASC";
+        String sql = "SELECT d.house_total, d.incharge, d.comments, d.door_no, d.visited, d.house_order, d.status, COALESCE(v.avail_count,0) as available_count " +
+                     "FROM doors d LEFT JOIN (SELECT door_no, COUNT(*) FILTER (WHERE status = 'Available') AS avail_count FROM voters_new GROUP BY door_no) v ON v.door_no = d.door_no " +
+                     "ORDER BY d.house_order ASC, d.door_no ASC";
         Query q = em.createNativeQuery(sql);
         //noinspection unchecked
         return (List<Object[]>) q.getResultList();
     }
 
     public List<Object[]> findDoorsRawByIncharge(String incharge) {
-        String sql = "SELECT house_total, incharge, comments, door_no, visited, house_order, status FROM doors WHERE incharge = :incharge ORDER BY house_order ASC, door_no ASC";
+        String sql = "SELECT d.house_total, d.incharge, d.comments, d.door_no, d.visited, d.house_order, d.status, COALESCE(v.avail_count,0) as available_count " +
+                     "FROM doors d LEFT JOIN (SELECT door_no, COUNT(*) FILTER (WHERE status = 'Available') AS avail_count FROM voters_new GROUP BY door_no) v ON v.door_no = d.door_no " +
+                     "WHERE d.incharge = :incharge ORDER BY d.house_order ASC, d.door_no ASC";
         Query q = em.createNativeQuery(sql);
         q.setParameter("incharge", incharge);
         //noinspection unchecked
